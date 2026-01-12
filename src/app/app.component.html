@@ -1,0 +1,117 @@
+<div class="digicert-theme">
+  <div class="top-bar">
+    <span>Suporte All4Sec: (48) 3054-7153</span>
+    <div class="top-links">
+      <a href="#">Portal do Parceiro</a>
+      <a href="#">Validações</a>
+    </div>
+  </div>
+
+  <nav class="main-nav">
+    <div class="nav-container">
+      <img src="all4seclogo2.png" alt="All4Sec Logo" class="logo">
+      <ul class="nav-menu">
+        <li>Code Signing</li>
+        <li>SSL/TLS</li>
+        <li>Document Signing</li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-buy">ADQUIRIR AGORA</button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero-section">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <span class="badge">PARCERIA DIGICERT 2026</span>
+        <h1>Segurança Digital: Code Signing & SSL</h1>
+        <p>
+          A All4Sec entrega a confiança da DigiCert para proteger sua identidade digital, 
+          desde a criptografia de servidores até a assinatura de executáveis e documentos.
+        </p>
+        <div class="cta-group">
+          <button class="btn-primary" (click)="scrollToSolutions()">Ver Certificados</button>
+          <button class="btn-outline">Falar com Especialista</button>
+        </div>
+      </div>
+      <div class="hero-image-placeholder">
+         <img src="all4secshield.png" alt="Escudo de Segurança" style="max-width: 100%; opacity: 0.8;">
+      </div>
+    </div>
+  </header>
+
+  <section class="solutions" id="solutions">
+    <h2>Soluções de Assinatura e Criptografia</h2>
+    
+    <div class="solution-grid">
+      @for (solution of solutions; track solution.title) {
+        <div class="solution-card">
+          <div class="card-icon">{{ solution.icon }}</div>
+          <h3>{{ solution.title }}</h3>
+          <p>{{ solution.description }}</p>
+          <a [href]="solution.link" class="card-link">Detalhes Técnicos →</a>
+        </div>
+      }
+    </div>
+  </section>
+
+  <section class="product-list">
+    <div class="product-container">
+      <h2>Catálogo Completo de Produtos</h2>
+      <div class="table-responsive">
+        <table class="digicert-table">
+          <thead>
+            <tr>
+              <th>Categoria</th>
+              <th>Produto</th>
+              <th>Descrição e Aplicação</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (prod of products; track prod.name) {
+              <tr>
+                <td><span class="tag-category">{{ prod.category }}</span></td>
+                <td><strong>{{ prod.name }}</strong></td>
+                <td>{{ prod.description }}</td>
+                <td><button class="btn-sm">Cotar</button></td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <footer class="main-footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="https://www.digicert.com/" target="_blank">
+          <img src="digicert.svg" width="120" alt="DigiCert Logo">
+        </a>
+        <p style="margin-top: 15px;">
+          All4Sec: Parceiro oficial DigiCert no Brasil.<br>
+          Líder mundial em soluções de confiança digital.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Certificados</h4>
+        <ul>
+          <li>EV Code Signing</li>
+          <li>Standard SSL</li>
+          <li>Wildcard SSL</li>
+          <li>Secure Site Pro</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Suporte</h4>
+        <ul>
+          <li>Instalação</li>
+          <li>Renovação</li>
+          <li>Validação Corporativa</li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</div>
