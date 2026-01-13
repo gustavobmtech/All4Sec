@@ -24,27 +24,27 @@ export const TRANSLATIONS = {
           icon: '🔐',
           description: 'Garanta a integridade do seu software. Assine executáveis e scripts para enviar alertas de segurança.',
           link: '#code-signing',
-          cta: 'Cotar Agora →' // Adicionado
+          cta: 'Cotar Agora →' 
         },
         {
           title: 'Certificados SSL/TLS',
           icon: '🛡️',
           description: 'Criptografia robusta para sites e servidores. Do DV básico ao EV para máxima confiança.',
           link: '#sll-tls',
-          cta: 'Cotar Agora →' // Adicionado
+          cta: 'Cotar Agora →' 
         },
         {
           title: 'Document Signing',
           icon: '✍️',
           description: 'Assinaturas digitais juridicamente vinculativas para PDFs e documentos corporativos.',
           link: '#doc-signing',
-          cta: 'Cotar Agora →' // Adicionado
+          cta: 'Cotar Agora →' 
         }
       ]
     },
     products: {
       title: 'Catálogo Completo de Certificados',
-      btnTable: 'Cotar', // Adicionado
+      btnTable: 'Cotar',
       headers: ['Categoria', 'Produto', 'Descrição e Aplicação', 'Ação'],
       items: [
         { category: 'SSL/TLS', name: 'Single Domain', description: 'Proteção padrão para um único domínio (FQDN).' },
@@ -60,7 +60,6 @@ export const TRANSLATIONS = {
       text: 'All4Sec: Parceiro oficial DigiCert no Brasil.\nLíder mundial em soluções de confiança digital.',
       certs: 'Certificados',
       support: 'Suporte',
-      // Adicionado estrutura plana conforme seu HTML
       install: 'Instalação',
       renew: 'Renovação',
       valid: 'Validação'
@@ -83,7 +82,7 @@ export const TRANSLATIONS = {
       ssl: 'SSL/TLS',
       doc: 'Document Signing',
       buy: 'BUY NOW',
-      support: 'All4Sec Partner Support',
+      support: 'All4Sec Support',
       portal: 'Partner Portal',
       validation: 'Validations'
     },
@@ -156,11 +155,11 @@ export const TRANSLATIONS = {
 
   ES: {
     nav: {
-      code: 'Firma de Código',
+      code: 'Code Signing',
       ssl: 'SSL/TLS',
-      doc: 'Firma de Documentos',
+      doc: 'Document Signing',
       buy: 'COMPRAR AHORA',
-      support: 'Soporte para Socios All4Sec',
+      support: 'Soporte All4Sec',
       portal: 'Portal de Socios',
       validation: 'Validaciones'
     },

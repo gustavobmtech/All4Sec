@@ -1,7 +1,7 @@
 <div class="digicert-theme">
   <div class="top-bar">
     <div class="top-bar-content">
-      <span class="support-text">{{ t().nav.support }}: <strong>(48) 3054-7153</strong></span>
+      <span class="support-text">{{ t().nav.support }}: <strong>(xx) xxxx-xxxx</strong></span>
       
       <div class="right-actions">
         <div class="top-links">
@@ -11,7 +11,7 @@
   
         <div class="lang-selector">
           <button class="lang-btn" (click)="toggleLangMenu()">
-            <span class="flag">{{ currentLang.flag }}</span> 
+            <img [src]="currentLang.flagUrl" alt="Flag" class="flag-icon">
             {{ currentLang.code }} 
             <span class="arrow">▼</span>
           </button>
@@ -20,7 +20,8 @@
             <ul class="lang-dropdown">
               @for (lang of languages; track lang.code) {
                 <li (click)="setLanguage(lang)">
-                  <span class="flag">{{ lang.flag }}</span> {{ lang.name }}
+                  <img [src]="lang.flagUrl" alt="{{ lang.name }}" class="flag-icon"> 
+                  {{ lang.name }}
                 </li>
               }
             </ul>

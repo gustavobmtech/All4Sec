@@ -15,14 +15,14 @@ export class AppComponent {
 
   title = 'parceria-digicert';
 
-  isLangMenuOpen = false;
-  currentLang = { code: 'PT', flag: '🇧🇷', name: 'Português' };
-
   languages = [
-    { code: 'PT', flag: '🇧🇷', name: 'Português' },
-    { code: 'EN', flag: '🇺🇸', name: 'English' },
-    { code: 'ES', flag: '🇪🇸', name: 'Español' }
+    { code: 'PT', flagUrl: 'https://flagcdn.com/w40/br.png', name: 'Português' },
+    { code: 'EN', flagUrl: 'https://flagcdn.com/w40/us.png', name: 'English' },
+    { code: 'ES', flagUrl: 'https://flagcdn.com/w40/es.png', name: 'Español' }
   ];
+
+  currentLang = this.languages[0];
+  isLangMenuOpen = false;
 
   toggleLangMenu() {
     this.isLangMenuOpen = !this.isLangMenuOpen;
