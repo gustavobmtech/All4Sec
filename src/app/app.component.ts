@@ -1,17 +1,49 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { TranslationService } from './translation.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './app.component.html',
-  // Lembre-se: styleUrl removido pois estamos usando styles.css global
 })
 export class AppComponent {
+  translationService = inject(TranslationService);
+  t = this.translationService.t;
+
   title = 'parceria-digicert';
 
-  // Cards principais (já existentes)
+  isLangMenuOpen = false;
+  currentLang = { code: 'PT', flag: '🇧🇷', name: 'Português' };
+
+  languages = [
+    { code: 'PT', flag: '🇧🇷', name: 'Português' },
+    { code: 'EN', flag: '🇺🇸', name: 'English' },
+    { code: 'ES', flag: '🇪🇸', name: 'Español' }
+  ];
+
+  toggleLangMenu() {
+    this.isLangMenuOpen = !this.isLangMenuOpen;
+  }
+
+setLanguage(lang: any) {
+    this.currentLang = lang;
+    this.isLangMenuOpen = false;
+    this.translationService.setLanguage(lang.code);
+  }
+
+  isModalOpen = false;
+
+  formData = {
+    name: '',
+    email: '',
+    phone: '',
+    company: '',
+    interest: ''
+  };
+
   solutions = [
     {
       title: 'Certificados Code Signing',
@@ -48,5 +80,33 @@ export class AppComponent {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+  }
+
+  openModal(interestContext: string = 'Geral') {
+    this.formData.interest = interestContext;
+    this.isModalOpen = true;
+  }
+
+  closeModal() {
+    this.isModalOpen = false;
+  }
+
+  submitForm() {
+    const subject = `Cotação All4Sec (${this.currentLang.code}): ${this.formData.interest}`;
+    const body = `
+      Olá! Gostaria de realizar uma cotação.
+      Idioma: ${this.currentLang.name}
+      ----------------
+      Nome: ${this.formData.name}
+      Empresa: ${this.formData.company}
+      E-mail: ${this.formData.email}
+      Telefone: ${this.formData.phone}
+      Interesse: ${this.formData.interest}
+      `;
+
+      const mailtoLink = `mailto:apricio@all4sec.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailtoLink;
+      this.closeModal();
+      alert('Seu cliente de e-mail foi aberto para finalizar o envio!');
   }
 }
