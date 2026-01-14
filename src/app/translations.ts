@@ -1,13 +1,16 @@
 export const TRANSLATIONS = {
   PT: {
+    topbar: {
+      phone: '+55 48 98824-6381',
+      support: 'Suporte All4Sec',
+      portal: 'Portal do Parceiro',
+      validation: 'Validação'
+    },
     nav: {
       code: 'Code Signing',
       ssl: 'SSL/TLS',
       doc: 'Document Signing',
       buy: 'ADQUIRIR AGORA',
-      support: 'Suporte All4Sec',
-      portal: 'Portal do Parceiro',
-      validation: 'Validação'
     },
     hero: {
       badge: 'PARCERIA DIGICERT 2026',
@@ -77,14 +80,17 @@ export const TRANSLATIONS = {
   },
 
   EN: {
+    topbar: {
+      phone: '+1 (954) 901-9527',
+      support: 'All4Sec Support',
+      portal: 'Partner Portal',
+      validation: 'Validations'
+    },
     nav: {
       code: 'Code Signing',
       ssl: 'SSL/TLS',
       doc: 'Document Signing',
       buy: 'BUY NOW',
-      support: 'All4Sec Support',
-      portal: 'Partner Portal',
-      validation: 'Validations'
     },
     hero: {
       badge: 'DIGICERT PARTNERSHIP 2026',
@@ -154,14 +160,17 @@ export const TRANSLATIONS = {
   },
 
   ES: {
-    nav: {
-      code: 'Code Signing',
-      ssl: 'SSL/TLS',
-      doc: 'Document Signing',
-      buy: 'COMPRAR AHORA',
+    topbar: {
+      phone: '+51 922 722 524',
       support: 'Soporte All4Sec',
       portal: 'Portal de Socios',
       validation: 'Validaciones'
+    },
+    nav: {
+      code: 'Firma de Código',
+      ssl: 'SSL/TLS',
+      doc: 'Firma de Documentos',
+      buy: 'COMPRAR AHORA',
     },
     hero: {
       badge: 'ALIANZA DIGICERT 2026',
