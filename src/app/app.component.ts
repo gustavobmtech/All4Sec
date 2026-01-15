@@ -92,21 +92,34 @@ setLanguage(lang: any) {
   }
 
   submitForm() {
-    const subject = `Cotação All4Sec (${this.currentLang.code}): ${this.formData.interest}`;
+    const targetEmail = 'aparicio@all4sec.com'
+    const subject = `Cotação Site All4Sec [${this.currentLang.code}]; ${this.formData.interest}`;
     const body = `
-      Olá! Gostaria de realizar uma cotação.
-      Idioma: ${this.currentLang.name}
-      ----------------
-      Nome: ${this.formData.name}
-      Empresa: ${this.formData.company}
-      E-mail: ${this.formData.email}
-      Telefone: ${this.formData.phone}
-      Interesse: ${this.formData.interest}
-      `;
+Olá! 
+      
+Gostaria de solicitar uma cotação/contato referente a produtos Digicert.
+      
+DADOS DO CLIENTE:
+------------------------------------------------
+Nome: ${this.formData.name}
+Empresa: ${this.formData.company}
+Telefone: ${this.formData.phone}
+E-mail: ${this.formData.email}
 
-      const mailtoLink = `mailto:apricio@all4sec.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      window.location.href = mailtoLink;
-      this.closeModal();
-      alert('Seu cliente de e-mail foi aberto para finalizar o envio!');
-  }
+DETALHES DA SOLICITAÇÃO:
+------------------------------------------------
+Produto de Interesse: ${this.formData.interest}
+Idioma do Usuário: ${this.currentLang.name}
+      
+------------------------------------------------
+Mensagem enviada via Formulário do Site All4Sec;`
+
+    const mailtoLink = `mailto:${targetEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    window.location.href = mailtoLink;
+
+    this.closeModal();
+
+    alert('Seu gerenciador de e-mail foi aberto com os dados preenchidos. Por favor, clique em ENVIAR para concluir a solicitação.');
+  }  
 }
