@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslationService } from './translation.service';
+import emailjs from '@emailjs/browser';
 
 @Component({
   selector: 'app-root',
@@ -34,8 +35,6 @@ setLanguage(lang: any) {
     this.translationService.setLanguage(lang.code);
   }
 
-  isModalOpen = false;
-
   formData = {
     name: '',
     email: '',
@@ -43,6 +42,7 @@ setLanguage(lang: any) {
     company: '',
     interest: ''
   };
+  isModalOpen = false;
 
   solutions = [
     {
@@ -91,35 +91,63 @@ setLanguage(lang: any) {
     this.isModalOpen = false;
   }
 
-  submitForm() {
-    const targetEmail = 'aparicio@all4sec.com'
-    const subject = `Cotação Site All4Sec [${this.currentLang.code}]; ${this.formData.interest}`;
-    const body = `
-Olá! 
-      
-Gostaria de solicitar uma cotação/contato referente a produtos Digicert.
-      
-DADOS DO CLIENTE:
-------------------------------------------------
+  async submitForm() {
+    if (!this.formData.name || !this.formData.email || !this.formData.phone) {
+      alert('Por favor, preenchas os campos obrigatórios.');
+      return;
+    }
+
+    const serviceID = 'SEU_SERVICE_ID';
+    const templateID = 'SEU_TEMPLATE_ID';
+    const publicKey = 'SUA_PUBLIC_KEY';
+
+    const templateParams = {
+      from_name: this.formData.name,
+      company: this.formData.company,
+      phone: this.formData.phone,
+      reply_to: this.formData.email,
+      product: this.formData.interest,
+      language: this.currentLang.name
+    };
+
+    try {
+      await emailjs.send(serviceID, templateID, templateParams, publicKey);
+
+      alert('Solicitação enviada com sucesso! Nossa equipe entrará em contato em breve.');
+      this.closeModal();
+
+      this.formData = { name: '', company: '', email: '', phone: '', interest: ''};
+
+    } catch (error) {
+      console.error('Erro no envio automático: ', error);
+
+      alert('Houve uma falha de conexão. Abriremos seu e-mail para envio manual.');
+
+      const targetEmail = 'aparicio@all4sec.com';
+      const subject = `Cotação Site All4Sec [{${this.currentLang.code}]: ${this.formData.interest}`;
+
+      const body = 
+`Prezados,
+
+Gostaria de solicitar uma cotação referente a produtos DigiCert.
+
+DADOS DO CLINTE:
+-------------------------------------------------
 Nome: ${this.formData.name}
 Empresa: ${this.formData.company}
 Telefone: ${this.formData.phone}
 E-mail: ${this.formData.email}
 
-DETALHES DA SOLICITAÇÃO:
-------------------------------------------------
-Produto de Interesse: ${this.formData.interest}
-Idioma do Usuário: ${this.currentLang.name}
-      
-------------------------------------------------
-Mensagem enviada via Formulário do Site All4Sec;`
+DETALHES:
+-------------------------------------------------
+Produto: ${this.formData.interest}
+Idioma: ${this.currentLang.name}
 
-    const mailtoLink = `mailto:${targetEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+-------------------------------------------------
+Mensagem enviada via Formulário do Site`;
 
-    window.location.href = mailtoLink;
-
-    this.closeModal();
-
-    alert('Seu gerenciador de e-mail foi aberto com os dados preenchidos. Por favor, clique em ENVIAR para concluir a solicitação.');
-  }  
+      window.location.href = `mailto:${targetEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      this.closeModal();
+    }
+  }
 }
