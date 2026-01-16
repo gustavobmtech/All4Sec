@@ -97,9 +97,9 @@ setLanguage(lang: any) {
       return;
     }
 
-    const serviceID = 'SEU_SERVICE_ID';
-    const templateID = 'SEU_TEMPLATE_ID';
-    const publicKey = 'SUA_PUBLIC_KEY';
+    const serviceID = 'service_wicgz2n';
+    const templateID = 'template_sqw8cgm';
+    const publicKey = 'VX_4H1EvvH3z8KwWC';
 
     const templateParams = {
       from_name: this.formData.name,
@@ -131,7 +131,7 @@ setLanguage(lang: any) {
 
 Gostaria de solicitar uma cotação referente a produtos DigiCert.
 
-DADOS DO CLINTE:
+DADOS DO CLIENTE:
 -------------------------------------------------
 Nome: ${this.formData.name}
 Empresa: ${this.formData.company}
